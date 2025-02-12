@@ -1,5 +1,7 @@
+import { useState } from "react"
 export function Password(){
-    return(
+    const [password , setPassword ] =  useState("");
+        return(
         <>
         <h1>Please enter correct password</h1>
         <form action="#" method="post">
