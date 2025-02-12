@@ -7,6 +7,7 @@ export function Password(){
         <form action="#" method="post">
         <label htmlFor="password">Pssword</label>
         <input type="password" name="password" id="password" />
+         <button>Send</button>
         </form>
         </>
     )
