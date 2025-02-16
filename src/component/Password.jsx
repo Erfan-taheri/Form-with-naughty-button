@@ -1,17 +1,75 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 export function Password() {
   const [password, setPassword] = useState("");
-function handlePassword(event){
-    console.log(password)
-    setPassword(event.target.value)
-}
+  const [isHovered, setIsHovered] = useState(true);
+  const [useRightBottom, setUseRightBottom] = useState(false);
+  const [position, setPosition] = useState({
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  });
+  function handlePassword(event) {
+    setPassword(event.target.value);
+  }
+  function setSave() {
+    let randomMaker1 = Math.round(Math.random() * 280);
+    let randomMaker2 = Math.round(Math.random() * 280);
+    let randomMaker3 = Math.round(Math.random() * 280);
+    let randomMaker4 = Math.round(Math.random() * 280);
+
+    if (password) {
+      console.log("True", position);
+      setIsHovered(true);
+      setPosition(() => {
+        return {
+          left: `0`,
+          top: `0`,
+          right: `0`,
+          bottom: `0`,
+        };
+      });
+    } else {
+      if (useRightBottom) {
+        // Use `right` and `bottom` for positioning
+        setPosition({
+          top: `-${randomMaker3}`,
+          left: `-${randomMaker4}`,
+          right: `${randomMaker1}`,
+          bottom: `${randomMaker2}`,
+        });
+      } else {
+        // Use `top` and `left` for positioning
+        setPosition({
+          top: `${randomMaker1}`,
+          left: `${randomMaker2}`,
+          right: `-${randomMaker4}`,
+          bottom: `${randomMaker3}`,
+        });
+      }
+      setUseRightBottom((prev) => {
+        return !prev;
+      }); // Toggle between modes
+      // setPosition(() => {
+      //   return {
+      //     left: `${randomMaker2}`,
+      //     top: `${randomMaker}`,
+      //     right: `${randomMaker3}`,
+      //     bottom: `${randomMaker4}`,
+      //   };
+      // });
+      setIsHovered(false);
+      console.log("False", position);
+    }
+  }
+
   return (
-    <div className="w-[100vw] h-[100vh] flex flex-col items-center justify-center ">
-      <div className="rounded-md bg-primary-color p-10 m-8 border border-solid border-accent-color-1 ">
+    <div className="overflow-hidden w-[100vw] h-[100vh] flex flex-col items-center justify-center ">
+      <div className=" rounded-md bg-primary-color p-10 m-8 border border-solid border-accent-color-1 ">
         <h1 className=" text-Text-color text-lg font-bold font  p-8 m-1">
           Please enter correct password
         </h1>
-        <form className="" action="#" method="post">
+        <form action="#" method="post">
           <label
             className="ml-1.5 w-[50%] text-Text-color p-8 "
             htmlFor="password"
@@ -19,14 +77,30 @@ function handlePassword(event){
             Pssword:
           </label>
           <input
-          onChange={handlePassword}
+            onChange={handlePassword}
             className="bg-Secondary-color w-[48%] text-Text-color p-3  focus:outline-accent-color-1"
             type="password"
             name="password"
             id="password"
+            required
           />
-          <div className="flex justify-center">
-            <button className="border w-[50%]  text-Text-color  border-accent-color-1 py-2 px-4 mt-8">
+          <div className="flex justify-center ">
+            <button
+              onMouseEnter={setSave}
+              className={
+                isHovered
+                  ? `rounded-xl relative border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
+                  : `rounded-xl bg-red-400 relative  border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
+              }
+              style={{
+                transition: position ,
+                transitionDuration: "700ms",
+                top: `${position.top}px`,
+                left: `${position.left}px`,
+                right: `${position.right}px`,
+                bottom: `${position.bottom}px`,
+              }}
+            >
               Send
             </button>
           </div>
