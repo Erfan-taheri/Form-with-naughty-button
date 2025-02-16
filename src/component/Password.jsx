@@ -13,13 +13,13 @@ export function Password() {
     setPassword(event.target.value);
   }
   function setSave() {
+    //Generate random numbers
     let randomMaker1 = Math.round(Math.random() * 280);
     let randomMaker2 = Math.round(Math.random() * 280);
     let randomMaker3 = Math.round(Math.random() * 280);
     let randomMaker4 = Math.round(Math.random() * 280);
 
     if (password) {
-      console.log("True", position);
       setIsHovered(true);
       setPosition(() => {
         return {
@@ -47,19 +47,12 @@ export function Password() {
           bottom: `${randomMaker3}`,
         });
       }
+      //Toggle useRightBottom
       setUseRightBottom((prev) => {
         return !prev;
-      }); // Toggle between modes
-      // setPosition(() => {
-      //   return {
-      //     left: `${randomMaker2}`,
-      //     top: `${randomMaker}`,
-      //     right: `${randomMaker3}`,
-      //     bottom: `${randomMaker4}`,
-      //   };
-      // });
+      });
       setIsHovered(false);
-      console.log("False", position);
+      
     }
   }
 
@@ -89,11 +82,13 @@ export function Password() {
               onMouseEnter={setSave}
               className={
                 isHovered
+                // Conditional display content based on password(invalid or not)
                   ? `rounded-xl relative border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
                   : `rounded-xl bg-red-400 relative  border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
               }
               style={{
-                transition: position ,
+                // Use position properties for move button and animate that
+                transition: position,
                 transitionDuration: "700ms",
                 top: `${position.top}px`,
                 left: `${position.left}px`,
