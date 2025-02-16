@@ -11,6 +11,9 @@ export function Password() {
     right: 0,
     bottom: 0,
   });
+  function showPass() {
+    console.log(password);
+  }
   function handlePassword(event) {
     setPassword(event.target.value);
   }
@@ -60,39 +63,32 @@ export function Password() {
   return (
     <div className="overflow-hidden w-[100vw] h-[100vh] flex flex-col items-center justify-center ">
       <div className=" rounded-md bg-primary-color p-10 m-8 border border-solid border-accent-color-1 ">
-        <h1 className=" text-Text-color text-lg font-bold font  p-8 m-1">
+        <h1 className="text-center text-Text-color text-lg font-bold font  p-8 m-1">
           Please enter correct password
         </h1>
         <form action="#" method="post">
+          
+          <div className=" flex justify-center items-center">
           <label
             className="ml-1.5 w-[50%] text-Text-color p-8 "
             htmlFor="password"
           >
             Pssword:
           </label>
-          <input 
-            placeholder="Enter your pass"
-            onChange={handlePassword}
-            className=" bg-Secondary-color w-[48%] text-Text-color p-3  focus:outline-accent-color-1"
-            type="password"
-            name="password"
-            id="password"
-            required
-          />
-          
-          <button
-          style={{
-            top:"5px",
-            right:"35px"
-          }}
-            className="text-2xl relative p-1 "
-            onClick={() => {
-              console.log("Clicked on eye");
-            }}
-          >
-            <FaEye />
-          </button>
+            <input
+              placeholder="Enter your pass"
+              onChange={handlePassword}
+              className="h-[50%] bg-Secondary-color w-[100%] text-Text-color p-3  focus:outline-accent-color-1"
+              type="password"
+              name="password"
+              id="password"
+              required
+            />
 
+            <span className="text-2xl relative p-1 right-8 hover:cursor-pointer " onClick={showPass}>
+              <FaEye />
+            </span>
+          </div>
           <div className="flex justify-center ">
             <button
               onMouseEnter={setSave}
