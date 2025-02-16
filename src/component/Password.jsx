@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import { FaEye } from "react-icons/fa";
+
 export function Password() {
   const [password, setPassword] = useState("");
   const [isHovered, setIsHovered] = useState(true);
@@ -68,15 +70,29 @@ export function Password() {
           >
             Pssword:
           </label>
-          <input
+          <input 
             placeholder="Enter your pass"
             onChange={handlePassword}
-            className="bg-Secondary-color w-[48%] text-Text-color p-3  focus:outline-accent-color-1"
+            className=" bg-Secondary-color w-[48%] text-Text-color p-3  focus:outline-accent-color-1"
             type="password"
             name="password"
             id="password"
             required
           />
+          
+          <button
+          style={{
+            top:"5px",
+            right:"35px"
+          }}
+            className="text-2xl relative p-1 "
+            onClick={() => {
+              console.log("Clicked on eye");
+            }}
+          >
+            <FaEye />
+          </button>
+
           <div className="flex justify-center ">
             <button
               onMouseEnter={setSave}
