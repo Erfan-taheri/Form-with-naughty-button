@@ -52,7 +52,6 @@ export function Password() {
         return !prev;
       });
       setIsHovered(false);
-      
     }
   }
 
@@ -70,6 +69,7 @@ export function Password() {
             Pssword:
           </label>
           <input
+            placeholder="Enter your pass"
             onChange={handlePassword}
             className="bg-Secondary-color w-[48%] text-Text-color p-3  focus:outline-accent-color-1"
             type="password"
@@ -82,8 +82,8 @@ export function Password() {
               onMouseEnter={setSave}
               className={
                 isHovered
-                // Conditional display content based on password(invalid or not)
-                  ? `rounded-xl relative border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
+                  ? // Conditional display content based on password(invalid or not)
+                    `rounded-xl relative border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
                   : `rounded-xl bg-red-400 relative  border width-[50%] text-Text-color border-accent-color-1 py-2 px-4 mt-8 hover:cursor-pointer`
               }
               style={{
