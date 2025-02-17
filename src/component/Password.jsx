@@ -1,7 +1,9 @@
 import { useState, useRef } from "react";
 import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
 
 export function Password() {
+  const [showPassword, setShowPassword] = useState(false);
   const [password, setPassword] = useState("");
   const [isHovered, setIsHovered] = useState(true);
   const [useRightBottom, setUseRightBottom] = useState(false);
@@ -13,6 +15,7 @@ export function Password() {
   });
   function showPass() {
     console.log(password);
+    setShowPassword(!showPassword);
   }
   function handlePassword(event) {
     setPassword(event.target.value);
@@ -67,26 +70,44 @@ export function Password() {
           Please enter correct password
         </h1>
         <form action="#" method="post">
-          
-          <div className=" flex justify-center items-center">
-          <label
-            className="ml-1.5 w-[50%] text-Text-color p-8 "
-            htmlFor="password"
-          >
-            Pssword:
-          </label>
+          <div className="flex justify-center items-center">
+            <label
+              className="ml-1.5 w-[50%] text-Text-color p-8"
+              htmlFor="username"
+            >
+              Username:
+            </label>
             <input
+            placeholder="Enter your user name"
+              className="relative right-7 h-[50%] bg-Secondary-color w-[70%] text-Text-color p-3  focus:outline-accent-color-1"
+              type="text"
+              name="username"
+              id="username"
+            />
+          </div>
+          <div className=" flex justify-center items-center">
+            <label
+              className="ml-1.5 w-[50%] text-Text-color p-8 "
+              htmlFor="password"
+            >
+              Pssword:
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
               placeholder="Enter your pass"
               onChange={handlePassword}
               className="h-[50%] bg-Secondary-color w-[100%] text-Text-color p-3  focus:outline-accent-color-1"
-              type="password"
               name="password"
               id="password"
               required
             />
 
-            <span className="text-2xl relative p-1 right-8 hover:cursor-pointer " onClick={showPass}>
-              <FaEye />
+            <span
+              className="text-2xl relative p-1 right-8 hover:cursor-pointer "
+              onClick={showPass}
+            >
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>
           </div>
           <div className="flex justify-center ">
