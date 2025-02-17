@@ -14,7 +14,6 @@ export function Password() {
     bottom: 0,
   });
   function showPass() {
-    console.log(password);
     setShowPassword(!showPassword);
   }
   function handlePassword(event) {
@@ -78,8 +77,8 @@ export function Password() {
               Username:
             </label>
             <input
-            placeholder="Enter your user name"
-              className="relative right-7 h-[50%] bg-Secondary-color w-[70%] text-Text-color p-3  focus:outline-accent-color-1"
+              placeholder="Enter your user name"
+              className="h-[50%] right-8 w-[200px] lg:h-[50%] lg:w-[68%] relative lg:right-8  bg-Secondary-color  text-Text-color p-3  focus:outline-accent-color-1"
               type="text"
               name="username"
               id="username"
@@ -97,7 +96,7 @@ export function Password() {
               value={password}
               placeholder="Enter your pass"
               onChange={handlePassword}
-              className="h-[50%] bg-Secondary-color w-[100%] text-Text-color p-3  focus:outline-accent-color-1"
+              className="w-[210px] lg:h-[50%] lg:w-[100%] bg-Secondary-color  text-Text-color p-3  focus:outline-accent-color-1"
               name="password"
               id="password"
               required
@@ -112,6 +111,7 @@ export function Password() {
           </div>
           <div className="flex justify-center ">
             <button
+              onTouchStart={setSave}
               onMouseEnter={setSave}
               className={
                 isHovered
